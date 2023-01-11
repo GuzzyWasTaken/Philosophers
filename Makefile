@@ -7,6 +7,7 @@ USER	= auzochuk
 LIBS	= -lglfw -L /Users/$(USER)/.brew/opt/glfw/lib/
 SRCS	= $(shell find ./src -iname "*.c")
 OBJS	= ${SRCS:.c=.o}
+HDR		= $(shell find ./src -iname "*.h")
 
 BOLD	= \033[1m
 BLACK	= \033[30;1m
@@ -27,10 +28,10 @@ libft:
 	@$(MAKE) -C
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "$(GREEN)$(BOLD)\rCompiling: $(notdir $<)\r\e[35C[OK]\n$(RESET)"
+	@$(CC) $(CFLAGS) -o $@ -c $<  && printf "$(GREEN)$(BOLD)\rCompiling: $(notdir $<)\r\e[35C[OK]\n$(RESET)"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBS) $(HDR) -o $(NAME)
 
 clean:
 	@rm -f $(OBJS)

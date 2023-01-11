@@ -4,24 +4,38 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <pthread.h>
+# include <stdbool.h>
+# include <stdio.h> //remve
+
+typedef struct s_menu	t_menu;
 
 typedef struct s_args
 {
-	int	start;
-	int	num_of_philos;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	is_dead;
+	int	phils;
+	int	ttd;
+	int	tte;
+	int	tts;
 }	t_args;
 
-typedef struct s_philo
+typedef struct s_philos
 {
-	int		meals;
-	int		rf;
-	int		lf;
-	t_args	*s_args;
-}	t_philo;
+	pthread_t		thread;
+	pthread_mutex_t	*right;
+	pthread_mutex_t	*left; // left is allocated last right
+
+	bool				state;
+	int					id;
+	unsigned long		last_meal;
+
+	t_menu				*menu;
+}	t_philos;
+
+typedef struct s_menu
+{
+	t_philos	*philos;
+	int			meals;
+	t_args		*s_args;
+}	t_menu;
 
 typedef struct s_fork
 {
