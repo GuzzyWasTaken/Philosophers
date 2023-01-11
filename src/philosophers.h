@@ -5,17 +5,19 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <stdbool.h>
-# include <stdio.h> //remve
+# include <stdio.h> //remv
+# include <sys/time.h>
 
 typedef struct s_menu	t_menu;
 
-typedef struct s_args
+typedef enum e_ingredients
 {
-	int	phils;
-	int	ttd;
-	int	tte;
-	int	tts;
-}	t_args;
+	NO_PHIL = 1,
+	TT_DIE = 2,
+	TT_EAT = 3,
+	TT_SLP = 4,
+	NO_MEALS = 5,
+}	t_ingredients;
 
 typedef struct s_philos
 {
@@ -23,7 +25,7 @@ typedef struct s_philos
 	pthread_mutex_t	*right;
 	pthread_mutex_t	*left; // left is allocated last right
 
-	bool				state;
+	bool				existence;
 	int					id;
 	unsigned long		last_meal;
 
@@ -33,8 +35,12 @@ typedef struct s_philos
 typedef struct s_menu
 {
 	t_philos	*philos;
-	int			meals;
-	t_args		*s_args;
+	unsigned long	clock;
+	int				no_phls;
+	int				ttd;
+	int				tte;
+	int				tts;
+	int				meals;
 }	t_menu;
 
 typedef struct s_fork
