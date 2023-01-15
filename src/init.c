@@ -45,20 +45,21 @@ void	*birth(void	*param)
 	menu = philo->menu;
 	prep(philo);
 	pthread_mutex_lock(philo->right);
+	printf("loser number %i picks up right fork\n", philo->id);
+	pthread_mutex_lock(philo->left);
+	printf("loser number %i picks up left fork\n", philo->id);
 	printf("loser number %i is eating\n", philo->id);
-	// pthread_mutex_lock(philo->left);
-// 	printf("loser number %i is eating\n", philo->id);
-// 	usleep(500);
+	usleep(500);
 	pthread_mutex_unlock(philo->right);
-// 	pthread_mutex_unlock(philo->left);
+	pthread_mutex_unlock(philo->left);
 }
 
 void	create_phils(t_menu	*menu)
 {
 	int	i;
 
-	i = 0;
-	while(++i < menu->no_phls)
+	i = -1;
+	while (++i < menu->no_phls)
 		pthread_create(&menu->philos[i].thread, NULL, &birth, &menu->philos[i]);
 	i = -1;
 	while (++i < menu->no_phls)
@@ -79,10 +80,12 @@ int	prepare(t_menu	*menu)
 		if (i != 0)
 			menu->philos[i].left = menu->philos[i - 1].right;
 	}
-	if (i > 0)
-		menu->philos[0].left = menu->philos[menu->no_phls].right;
-	else
-		menu->philos[0].left = NULL
+	menu->philos[0].left = menu->philos[i].right;
+	printf("last philos right fork adddy: %p\n First philos left fork addy: %p\n", menu->philos[i].right,menu->philos[0].left);
+	// if (i > 0)
+	// 	menu->philos[0].left = menu->philos[menu->no_phls].right;
+	// else
+	// 	menu->philos[0].left = NULL;
 	return (0);
 }
 
@@ -101,5 +104,6 @@ int	parse_args(char	**args)
 	menu->philos = malloc(menu->no_phls * sizeof(t_philos));
 	// menu->clock = gettimeofday()
 	prepare(menu);
+	create_phils(menu);
 	return (0);
 }
