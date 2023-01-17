@@ -87,6 +87,7 @@ int	main(int    ac, char  **av)
 
 	if (ac != 6)
 		return(1);
+	
 	parse_args(av);
 	// menu->s_args->phils = ft_atoi(av[1]);
 	// create_t(menu);
