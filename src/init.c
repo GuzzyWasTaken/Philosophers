@@ -6,12 +6,21 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/16 16:50:10 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/01/17 21:09:20 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/01/18 15:13:36 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include <stdbool.h>
+
+bool	ft_isdigit(char a)
+{
+	if ((a >= '0') && (a <= '9'))
+		return (true);
+	else
+		return (false);
+}
+
 
 int	ft_atoi(const char	*s)
 {
@@ -171,7 +180,7 @@ void	*birth(void	*param)
 	philo = param;
 	menu = philo->menu;
 	prep(philo);
-	while(philo->existence == true)
+	while (philo->existence == true)
 	{
 		if (philo->state == EATING)
 			dindins(philo);
@@ -230,21 +239,44 @@ int	prepare(t_menu	*menu)
 
 /*still needs proper error handling or parsing
 needs time of day*/
-int	parse_args(char	**args)
+int	init(char	**args)
 {
 	t_menu	*menu;
 	t_fork	*forks;
 
 	menu = calloc(1, sizeof(t_menu));
+	if (!menu)
+		return (1);
 	menu->no_phls = ft_atoi(args[NO_PHIL]);
 	menu->ttd = ft_atoi(args[TT_DIE]);
 	menu->tte = ft_atoi(args[TT_EAT]);
 	menu->tts = ft_atoi(args[TT_SLP]);
 	menu->philos = malloc(menu->no_phls * sizeof(t_philos));
+	if (!menu->philos)
+		return (1);
 	menu->terminate = false;
-	pthread_mutex_init(&menu->master_lock, NULL); //check return value?
 	menu->start = get_time(menu);
 	prepare(menu);
 	create_phils(menu);
+	return (0);
+}
+
+int	parse(char	**av)
+{
+	int	i;
+	int	x;
+	
+	i = 0;
+	x = 0;
+	while (av[++i])
+	{
+		while(av[i][x])
+		{
+			if (ft_isdigit(av[i][x] == false || av[i][x] < 0)
+				return (1);
+			x++;
+		}
+		x = 0;
+	}
 	return (0);
 }
