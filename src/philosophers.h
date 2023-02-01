@@ -7,6 +7,7 @@
 # include <stdbool.h>
 # include <stdio.h> //remv
 # include <sys/time.h>
+# include <limits.h>
 
 # define EATING_T  "%lu Philosopher %i is now eating\n"
 # define SLEEPING_T  "%lu Philosopher %i is now sleeping\n"
@@ -52,6 +53,7 @@ typedef struct s_philos
 	int					state;
 	int					id;
 	unsigned long		last_meal;
+	int					num_meals;
 
 	t_menu				*menu;
 }	t_philos;
@@ -69,6 +71,7 @@ typedef struct s_menu
 	pthread_mutex_t	master_lock;
 	pthread_mutex_t report_lock;
 	bool			terminate;
+	bool			fat;
 }	t_menu;
 
 typedef struct s_fork
@@ -77,6 +80,7 @@ typedef struct s_fork
 	pthread_mutex_t lock;
 }	t_fork;
 
-int parse_args(char	**args);
+int	init(char	**args);
+int	parse(char	**av);
 
 #endif

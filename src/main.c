@@ -8,8 +8,9 @@ int	main(int    ac, char  **av)
 
 	if (ac != 6)
 		return(1);
-	init(av);
-	parse_args(av);
+	if(init(av) == 1)
+		return (0);
+
 	// menu->s_args->phils = ft_atoi(av[1]);
 	// create_t(menu);
 	// join_t(menu);
