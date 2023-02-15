@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/16 16:50:10 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/01/31 17:51:11 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/02/15 19:51:01 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,30 +59,41 @@ unsigned long	get_time(t_menu *menu)
 	return (curtime - menu->start);
 }
 
-void	terminate(t_philos *philo)
+bool	done_eating(t_menu *menu)
+{
+	int			i;
+	int			count;
+	t_philos	*phil;
+
+	count = 0;
+	i = 0;
+	phil = menu->philos;
+	if (menu->meals == 0)
+		return (false);
+	while (phil[i].num_meals >= menu->meals && i < menu->no_phls)
+		i++;
+	if (i == menu->no_phls)
+	{
+		printf("they all fat now\n");
+		return (true);
+	}
+	return (false);
+}
+
+bool	terminate(t_philos *philo)
 {
 	pthread_mutex_lock(&philo->menu->master_lock);
-	if (philo->menu->terminate == true)
+	if (philo->menu->terminate == true || done_eating(philo->menu) == true)
+	{
+		printf("philo %i is false\n", philo->id);
 		philo->existence = false;
+		pthread_mutex_unlock(&philo->menu->master_lock);
+		return (false);
+	}
 	pthread_mutex_unlock(&philo->menu->master_lock);
+	return (true);
 }
 
-void	done_eating(t_menu *menu)
-{
-	int	i;
-	t_philos *phil;
-
-	menu->fat = false;
-	if (menu->meals == 0)
-		return ;
-	phil = menu->philos;
-	i = 0;
-	while (phil[i].num_meals == menu->meals)
-		i++;
-	if (i == NO_PHIL)
-		menu->fat = true;
-	
-}
 
 void	fax_report(t_philos *philo)
 {
@@ -102,7 +113,12 @@ int	report(t_philos	*philo, unsigned long time)
 {
 	pthread_mutex_lock(&philo->menu->report_lock);
 	if (philo->menu->death_counter == 1)
+	{
+		terminate(philo);
+		pthread_mutex_unlock(&philo->menu->report_lock);
+		// printf("%i is leaving report\n", philo->id);
 		return (1);
+	}
 	terminate(philo);
 	if (philo->existence == false)
 	{
@@ -111,52 +127,54 @@ int	report(t_philos	*philo, unsigned long time)
 		pthread_mutex_unlock(&philo->menu->report_lock);
 		return (1);
 	}
-	if(philo->menu->terminate == false)
-		fax_report(philo);
+	fax_report(philo);
 	pthread_mutex_unlock(&philo->menu->report_lock);
 	return (0);
 }
 
-void last_supper(t_menu *menu)
+bool last_supper(t_menu *menu)
 {
 	t_philos *phil;
 	int i;
-	
+
 	i = 0;
 	phil = menu->philos;
 	while (i < menu->no_phls)
 	{
-		if (get_time(menu) - phil[i].last_meal > menu->ttd)
+		pthread_mutex_lock(&phil[i].body);
+		if (get_time(menu) - phil[i].last_meal > menu->ttd) // DATA RACE?
 		{
+			printf("philo %i 's last meal was %lu and the current time is %lu time to die is %i\n", phil->id, phil->last_meal, get_time(menu), phil->menu->ttd);
+			pthread_mutex_lock(&menu->master_lock);
 			menu->terminate = true;
-			if (report(&phil[i], get_time(phil[i].menu)) == 1)
-				pthread_mutex_lock(&phil[i].menu->report_lock); //reformat for norm. put into solo func
-			break;
+			report(&phil[i], get_time(phil[i].menu));
+			pthread_mutex_unlock(&menu->master_lock);
+			return (true);
+			// break ;
 		}
 		pthread_mutex_unlock(&phil[i].body);
 		i++;
 	}
+	return (false);
 }
 
 void	observe(t_menu *menu)
 {
-	int				i;
 	t_philos		*phil;
+	bool			fat;
+	bool			terminate;
 
-	i = 0;
+	terminate = false;
+	fat = false;
 	phil = menu->philos;
-	while (menu->terminate != true)
+	while (terminate == false && fat == false) // data race
 	{
-		pthread_mutex_lock(&phil[i].body);
-		done_eating(menu);
-		if (menu->fat == true)
-			return ;
-		last_supper(menu);
+		terminate = last_supper(menu);
+		// fat = done_eating(menu);
 		usleep(500);
-		i = 0;
 	}
+	return ;
 }
-
 
 void	prep(t_philos *philo)
 {
@@ -165,8 +183,8 @@ void	prep(t_philos *philo)
 	menu = philo->menu;
 	philo->existence = true;
 	philo->state = EATING;
-	// pthread_mutex_lock(&menu->master_lock);
-	// pthread_mutex_unlock(&menu->master_lock);
+	pthread_mutex_lock(&menu->master_lock);
+	pthread_mutex_unlock(&menu->master_lock);
 	philo->last_meal = get_time(menu);
 	if (philo->id % 2 == 0)
 		usleep(500);
@@ -177,71 +195,89 @@ int	dindins(void	*param)
 	t_philos		*philo;
 	t_menu			*menu;
 	unsigned long	time;
-	int				i;
-	
+
 	philo = param;
 	menu = philo->menu;
 	philo->state = FORK_R;
 	pthread_mutex_lock(philo->right);
-	i += report(philo, get_time(philo->menu));
+	report(philo, get_time(philo->menu));
 	philo->state = FORK_L;
 	if (!philo->left)
 		return (0) ;
 	pthread_mutex_lock(philo->left);
-	i += report(philo, get_time(philo->menu));
+	report(philo, get_time(philo->menu));
 	pthread_mutex_lock(&philo->body);
 	philo->state = EATING;
 	philo->num_meals++;
-	i += report(philo, get_time(philo->menu));
+	report(philo, get_time(philo->menu));
 	philo->last_meal = get_time(menu);
 	pthread_mutex_unlock(&philo->body);
 	usleep(menu->tte * 1000);
 	pthread_mutex_unlock(philo->right);
 	pthread_mutex_unlock(philo->left);
-	philo->state = SLEEPING;
-	return (i);
+	// printf("return is = %i\n");
+	return (0);
 }
+
+//make local existnce bool
 
 void	*birth(void	*param)
 {
 	t_philos	*philo;
 	t_menu		*menu;
+	bool		existence;
+	bool		fat;
 
+	fat = false;
 	philo = param;
 	menu = philo->menu;
 	prep(philo);
-	while (philo->existence == true)
+	existence = terminate(philo);
+	while (existence == true && fat == false)// DATA RACE ??
 	{
+		fat = done_eating(menu);
 		if (philo->state == EATING)
+		{
 			dindins(philo);
+			philo->state = SLEEPING;
+		}
 		if (philo->state == SLEEPING)
 		{
 			usleep(philo->menu->tts * 1000);
-			if (philo->num_meals < menu->meals)
-				philo->state = THINKING;
+			philo->state = THINKING;
 		}
 		if (philo->state == THINKING)
 		{
-			report(philo, get_time(philo->menu));
+			report(philo, get_time(menu));
+			existence = terminate(philo);
 			philo->state = EATING;
 		}
-		terminate(philo);
+		// printf("philo %i in birth still\n", philo->id);
+		existence = terminate(philo);
 	}
+//	printf("philo returning\n");
 	return (NULL);
 }
 
-void	create_phils(t_menu	*menu)
+void	join_threads(t_menu *menu)
 {
 	int	i;
 
 	i = -1;
 	while (++i < menu->no_phls)
-		pthread_create(&menu->philos[i].thread, NULL, &birth, &menu->philos[i]);
-	observe(menu);
-	pthread_mutex_unlock(&menu->master_lock);
-	i = -1;
-	while (++i < menu->no_phls)
 		pthread_join(menu->philos[i].thread, NULL);
+	return ;
+}
+
+void	create_phils(t_menu	*menu)
+{
+	int	i;
+	i = -1;
+	pthread_mutex_lock(&menu->master_lock);
+	while (++i < menu->no_phls)
+		pthread_create(&menu->philos[i].thread, NULL, &birth, &menu->philos[i]);
+	pthread_mutex_unlock(&menu->master_lock);
+	return ;
 }
 
 int	prepare(t_menu	*menu)
@@ -285,7 +321,7 @@ int	init(char	**args)
 		return (1);
 	menu->ttd = ft_atoi(args[TT_DIE]);
 	if (menu->ttd > INT_MAX)
-		return (1);
+		return (1); 
 	menu->tte = ft_atoi(args[TT_EAT]);
 	if (menu->tte > INT_MAX)
 		return (1);
@@ -293,6 +329,7 @@ int	init(char	**args)
 	menu->meals = ft_atoi(args[NO_MEALS]);
 	if (menu->tts > INT_MAX)
 		return (1);
+	pthread_mutex_init(&menu->master_lock, NULL);
 	menu->philos = malloc(menu->no_phls * sizeof(t_philos));
 	if (!menu->philos)
 		return (1);
@@ -300,6 +337,8 @@ int	init(char	**args)
 	menu->start = get_time(menu);
 	prepare(menu);
 	create_phils(menu);
+	observe(menu);
+	join_threads(menu);
 	return (0);
 }
 
