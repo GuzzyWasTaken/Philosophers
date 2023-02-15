@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/16 16:50:10 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/02/15 19:51:01 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/02/15 21:16:30 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ unsigned long	get_time(t_menu *menu)
 
 bool	done_eating(t_menu *menu)
 {
+	pthread_mutex_lock(&menu->fat_lock);
 	int			i;
 	int			count;
 	t_philos	*phil;
@@ -74,18 +75,19 @@ bool	done_eating(t_menu *menu)
 		i++;
 	if (i == menu->no_phls)
 	{
-		printf("they all fat now\n");
+		pthread_mutex_unlock(&menu->fat_lock);
 		return (true);
 	}
+	pthread_mutex_unlock(&menu->fat_lock);
 	return (false);
 }
 
 bool	terminate(t_philos *philo)
 {
 	pthread_mutex_lock(&philo->menu->master_lock);
-	if (philo->menu->terminate == true || done_eating(philo->menu) == true)
+	if (philo->menu->terminate == true)
 	{
-		printf("philo %i is false\n", philo->id);
+		// printf("philo %i is false\n", philo->id);
 		philo->existence = false;
 		pthread_mutex_unlock(&philo->menu->master_lock);
 		return (false);
@@ -147,7 +149,7 @@ bool last_supper(t_menu *menu)
 			printf("philo %i 's last meal was %lu and the current time is %lu time to die is %i\n", phil->id, phil->last_meal, get_time(menu), phil->menu->ttd);
 			pthread_mutex_lock(&menu->master_lock);
 			menu->terminate = true;
-			report(&phil[i], get_time(phil[i].menu));
+			// report(&phil[i], get_time(phil[i].menu));
 			pthread_mutex_unlock(&menu->master_lock);
 			return (true);
 			// break ;
@@ -169,8 +171,8 @@ void	observe(t_menu *menu)
 	phil = menu->philos;
 	while (terminate == false && fat == false) // data race
 	{
+		fat = done_eating(menu);
 		terminate = last_supper(menu);
-		// fat = done_eating(menu);
 		usleep(500);
 	}
 	return ;
@@ -235,7 +237,6 @@ void	*birth(void	*param)
 	existence = terminate(philo);
 	while (existence == true && fat == false)// DATA RACE ??
 	{
-		fat = done_eating(menu);
 		if (philo->state == EATING)
 		{
 			dindins(philo);
@@ -248,12 +249,15 @@ void	*birth(void	*param)
 		}
 		if (philo->state == THINKING)
 		{
-			report(philo, get_time(menu));
 			existence = terminate(philo);
+			report(philo, get_time(menu));
 			philo->state = EATING;
 		}
 		// printf("philo %i in birth still\n", philo->id);
 		existence = terminate(philo);
+		fat = done_eating(menu);
+		if (fat == true)
+			printf("I KNOW WE'RE FAT %i\n", philo->id);
 	}
 //	printf("philo returning\n");
 	return (NULL);
