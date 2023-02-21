@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/16 16:50:10 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/02/15 21:16:30 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/02/21 02:29:02 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,7 @@ bool	ft_isdigit(char a)
 }
 
 
-int	ft_atoi(const char	*s)
-{
-	int				i;
-	unsigned long	num;
 
-	i = 1;
-	num = 0;
-	while (*s == '\n' || *s == '\t' || *s == '\r' || *s == '\n'
-		|| *s == '\v' || *s == '\f' || *s == ' ')
-		s++;
-	if (*s == '+' || *s == '-')
-	{
-		if (*s == '-')
-			i = -1;
-		s++;
-	}
-	while ((*s >= '0') && (*s <= '9'))
-	{
-		num = (num * 10) + (*s - '0');
-		s++;
-	}
-	if (num > 9223372036854775807)
-		return (0);
-	return ((int)num * i);
-}
 
 unsigned long	get_time(t_menu *menu)
 {
@@ -70,7 +46,10 @@ bool	done_eating(t_menu *menu)
 	i = 0;
 	phil = menu->philos;
 	if (menu->meals == 0)
+	{
+		pthread_mutex_unlock(&menu->fat_lock);
 		return (false);
+	}
 	while (phil[i].num_meals >= menu->meals && i < menu->no_phls)
 		i++;
 	if (i == menu->no_phls)
@@ -84,15 +63,15 @@ bool	done_eating(t_menu *menu)
 
 bool	terminate(t_philos *philo)
 {
-	pthread_mutex_lock(&philo->menu->master_lock);
+	pthread_mutex_lock(&philo->menu->term_lock);
 	if (philo->menu->terminate == true)
 	{
 		// printf("philo %i is false\n", philo->id);
 		philo->existence = false;
-		pthread_mutex_unlock(&philo->menu->master_lock);
+		pthread_mutex_unlock(&philo->menu->term_lock);
 		return (false);
 	}
-	pthread_mutex_unlock(&philo->menu->master_lock);
+	pthread_mutex_unlock(&philo->menu->term_lock);
 	return (true);
 }
 
@@ -101,24 +80,25 @@ void	fax_report(t_philos *philo)
 {
 	if (philo->state == EATING)
 		printf(EATING_T, get_time(philo->menu), philo->id);
-	if (philo->state == SLEEPING)
+	else if (philo->state == SLEEPING)
 		printf(SLEEPING_T, get_time(philo->menu), philo->id);
-	if (philo->state == THINKING)
+	else if (philo->state == THINKING)
 		printf(THINKING_T, get_time(philo->menu), philo->id);
-	if (philo->state == FORK_L)
+	else if (philo->state == FORK_L)
 		printf(LFORK_T, get_time(philo->menu), philo->id);
-	if (philo->state == FORK_R)
+	else if (philo->state == FORK_R)
 		printf(RFORK_T, get_time(philo->menu), philo->id);
 }
 
 int	report(t_philos	*philo, unsigned long time)
 {
+
 	pthread_mutex_lock(&philo->menu->report_lock);
 	if (philo->menu->death_counter == 1)
 	{
 		terminate(philo);
 		pthread_mutex_unlock(&philo->menu->report_lock);
-		// printf("%i is leaving report\n", philo->id);
+		//printf("%i is leaving report\n", philo->id);
 		return (1);
 	}
 	terminate(philo);
@@ -129,7 +109,8 @@ int	report(t_philos	*philo, unsigned long time)
 		pthread_mutex_unlock(&philo->menu->report_lock);
 		return (1);
 	}
-	fax_report(philo);
+	else
+		fax_report(philo);
 	pthread_mutex_unlock(&philo->menu->report_lock);
 	return (0);
 }
@@ -146,11 +127,13 @@ bool last_supper(t_menu *menu)
 		pthread_mutex_lock(&phil[i].body);
 		if (get_time(menu) - phil[i].last_meal > menu->ttd) // DATA RACE?
 		{
-			printf("philo %i 's last meal was %lu and the current time is %lu time to die is %i\n", phil->id, phil->last_meal, get_time(menu), phil->menu->ttd);
+			//printf("philo %i 's last meal was %lu and the current time is %lu time to die is %i\n", phil->id, phil->last_meal, get_time(menu), phil->menu->ttd);
+			phil[i].existence = false;
 			pthread_mutex_lock(&menu->master_lock);
 			menu->terminate = true;
-			// report(&phil[i], get_time(phil[i].menu));
 			pthread_mutex_unlock(&menu->master_lock);
+			report(&phil[i], get_time(phil[i].menu));
+			pthread_mutex_unlock(&phil[i].body);
 			return (true);
 			// break ;
 		}
@@ -235,31 +218,31 @@ void	*birth(void	*param)
 	menu = philo->menu;
 	prep(philo);
 	existence = terminate(philo);
-	while (existence == true && fat == false)// DATA RACE ??
+	while (existence == true && fat == false)
 	{
 		if (philo->state == EATING)
 		{
 			dindins(philo);
 			philo->state = SLEEPING;
 		}
-		if (philo->state == SLEEPING)
+		else if (philo->state == SLEEPING)
 		{
 			usleep(philo->menu->tts * 1000);
 			philo->state = THINKING;
 		}
-		if (philo->state == THINKING)
+		else if (philo->state == THINKING)
 		{
 			existence = terminate(philo);
 			report(philo, get_time(menu));
 			philo->state = EATING;
 		}
-		// printf("philo %i in birth still\n", philo->id);
+		//printf("philo %i in birth still\n", philo->id);
 		existence = terminate(philo);
 		fat = done_eating(menu);
-		if (fat == true)
-			printf("I KNOW WE'RE FAT %i\n", philo->id);
+		// if (fat == true)
+		// 	printf("I KNOW WE'RE FAT %i\n", philo->id);
 	}
-//	printf("philo returning\n");
+	//printf("philo %i returning\n", philo->id);
 	return (NULL);
 }
 
@@ -310,41 +293,6 @@ int	prepare(t_menu	*menu)
 
 /*still needs proper error handling or parsing
 needs time of day*/
-int	init(char	**args)
-{
-	t_menu	*menu;
-	t_fork	*forks;
-
-	if (parse(args) == 1)
-		return (1);
-	menu = calloc(1, sizeof(t_menu));
-	if (!menu)
-		return (1);
-	menu->no_phls = ft_atoi(args[NO_PHIL]);
-	if (menu->no_phls > INT_MAX)
-		return (1);
-	menu->ttd = ft_atoi(args[TT_DIE]);
-	if (menu->ttd > INT_MAX)
-		return (1); 
-	menu->tte = ft_atoi(args[TT_EAT]);
-	if (menu->tte > INT_MAX)
-		return (1);
-	menu->tts = ft_atoi(args[TT_SLP]);
-	menu->meals = ft_atoi(args[NO_MEALS]);
-	if (menu->tts > INT_MAX)
-		return (1);
-	pthread_mutex_init(&menu->master_lock, NULL);
-	menu->philos = malloc(menu->no_phls * sizeof(t_philos));
-	if (!menu->philos)
-		return (1);
-	menu->terminate = false;
-	menu->start = get_time(menu);
-	prepare(menu);
-	create_phils(menu);
-	observe(menu);
-	join_threads(menu);
-	return (0);
-}
 
 int	parse(char	**av)
 {
