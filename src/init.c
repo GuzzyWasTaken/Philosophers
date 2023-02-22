@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/16 16:50:10 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/02/21 02:29:02 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/02/22 00:59:15 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	report(t_philos	*philo, unsigned long time)
 	if (philo->menu->death_counter == 1)
 	{
 		terminate(philo);
-		pthread_mutex_unlock(&philo->menu->report_lock);
+		// pthread_mutex_unlock(&philo->menu->report_lock);
 		//printf("%i is leaving report\n", philo->id);
 		return (1);
 	}
@@ -117,8 +117,8 @@ int	report(t_philos	*philo, unsigned long time)
 
 bool last_supper(t_menu *menu)
 {
-	t_philos *phil;
-	int i;
+	t_philos	*phil;
+	int			i;
 
 	i = 0;
 	phil = menu->philos;
@@ -206,6 +206,29 @@ int	dindins(void	*param)
 
 //make local existnce bool
 
+void	better_sleep(unsigned long duration, t_menu *menu)
+{
+	unsigned long	goal;
+	unsigned long	now;
+	unsigned long	delta;
+
+	goal = get_time(menu) + duration;
+	while (true)
+	{
+		now = get_time(menu);
+		if (now >= goal)
+			return ;
+		delta = goal - now;
+		if (delta <= 1)
+		{
+			while (get_time(menu) < goal)
+				usleep(200);
+			return ;
+		}
+		usleep(delta >> 1);
+	}
+}
+
 void	*birth(void	*param)
 {
 	t_philos	*philo;
@@ -228,11 +251,12 @@ void	*birth(void	*param)
 		else if (philo->state == SLEEPING)
 		{
 			usleep(philo->menu->tts * 1000);
+			// better_sleep(philo->menu->tts * 1000, menu); 
 			philo->state = THINKING;
 		}
 		else if (philo->state == THINKING)
 		{
-			existence = terminate(philo);
+			// existence = terminate(philo);
 			report(philo, get_time(menu));
 			philo->state = EATING;
 		}
