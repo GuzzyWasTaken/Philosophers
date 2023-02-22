@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/16 16:50:10 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/02/22 00:59:15 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/02/23 00:01:07 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,28 @@ bool	ft_isdigit(char a)
 		return (false);
 }
 
+void	better_sleep(unsigned long duration, t_menu *menu)
+{
+	unsigned long	goal;
+	unsigned long	now;
+	unsigned long	delta;
 
-
-
+	goal = get_time(menu) + duration;
+	while (true)
+	{
+		now = get_time(menu);
+		if (now >= goal)
+			return ;
+		delta = goal - now;
+		if (delta <= 1)
+		{
+			while (get_time(menu) < goal)
+				usleep(200);
+			return ;
+		}
+		usleep((delta * 2) / 3);
+	}
+}
 unsigned long	get_time(t_menu *menu)
 {
 	struct timeval	tv;
@@ -35,8 +54,9 @@ unsigned long	get_time(t_menu *menu)
 	return (curtime - menu->start);
 }
 
-bool	done_eating(t_menu *menu)
+bool	done_eating(t_menu *menu)// make only observer cvheck fud
 {
+	// printf("hi\n");
 	pthread_mutex_lock(&menu->fat_lock);
 	int			i;
 	int			count;
@@ -97,17 +117,21 @@ int	report(t_philos	*philo, unsigned long time)
 	if (philo->menu->death_counter == 1)
 	{
 		terminate(philo);
-		// pthread_mutex_unlock(&philo->menu->report_lock);
+		pthread_mutex_unlock(&philo->menu->report_lock);
 		//printf("%i is leaving report\n", philo->id);
 		return (1);
 	}
-	terminate(philo);
 	if (philo->existence == false)
 	{
 		philo->menu->death_counter = 1;
 		printf(DEATH_T "with %i meals\n", time, philo->id, philo->num_meals);
 		pthread_mutex_unlock(&philo->menu->report_lock);
 		return (1);
+	}
+	else if (terminate(philo) == false)
+	{		
+		pthread_mutex_unlock(&philo->menu->report_lock);
+		return (0);
 	}
 	else
 		fax_report(philo);
@@ -118,9 +142,11 @@ int	report(t_philos	*philo, unsigned long time)
 bool last_supper(t_menu *menu)
 {
 	t_philos	*phil;
+	int			satisfied;
 	int			i;
 
 	i = 0;
+	satisfied = 0;
 	phil = menu->philos;
 	while (i < menu->no_phls)
 	{
@@ -135,10 +161,19 @@ bool last_supper(t_menu *menu)
 			report(&phil[i], get_time(phil[i].menu));
 			pthread_mutex_unlock(&phil[i].body);
 			return (true);
-			// break ;
 		}
+		if (phil[i].num_meals >= menu->meals)
+			satisfied++;
 		pthread_mutex_unlock(&phil[i].body);
 		i++;
+	}
+	if (satisfied == menu->no_phls && menu->meals > 0)
+	{
+		pthread_mutex_lock(&menu->master_lock);
+		menu->terminate = true;
+		pthread_mutex_unlock(&menu->master_lock);
+		printf ("ALL DONE EATING\n");
+		return (true);
 	}
 	return (false);
 }
@@ -154,7 +189,7 @@ void	observe(t_menu *menu)
 	phil = menu->philos;
 	while (terminate == false && fat == false) // data race
 	{
-		fat = done_eating(menu);
+		// fat = done_eating(menu);
 		terminate = last_supper(menu);
 		usleep(500);
 	}
@@ -197,7 +232,7 @@ int	dindins(void	*param)
 	report(philo, get_time(philo->menu));
 	philo->last_meal = get_time(menu);
 	pthread_mutex_unlock(&philo->body);
-	usleep(menu->tte * 1000);
+	better_sleep(menu->tte, menu);
 	pthread_mutex_unlock(philo->right);
 	pthread_mutex_unlock(philo->left);
 	// printf("return is = %i\n");
@@ -205,43 +240,17 @@ int	dindins(void	*param)
 }
 
 //make local existnce bool
-
-void	better_sleep(unsigned long duration, t_menu *menu)
-{
-	unsigned long	goal;
-	unsigned long	now;
-	unsigned long	delta;
-
-	goal = get_time(menu) + duration;
-	while (true)
-	{
-		now = get_time(menu);
-		if (now >= goal)
-			return ;
-		delta = goal - now;
-		if (delta <= 1)
-		{
-			while (get_time(menu) < goal)
-				usleep(200);
-			return ;
-		}
-		usleep(delta >> 1);
-	}
-}
-
 void	*birth(void	*param)
 {
 	t_philos	*philo;
 	t_menu		*menu;
 	bool		existence;
-	bool		fat;
 
-	fat = false;
 	philo = param;
 	menu = philo->menu;
 	prep(philo);
 	existence = terminate(philo);
-	while (existence == true && fat == false)
+	while (existence == true)
 	{
 		if (philo->state == EATING)
 		{
@@ -250,21 +259,20 @@ void	*birth(void	*param)
 		}
 		else if (philo->state == SLEEPING)
 		{
-			usleep(philo->menu->tts * 1000);
-			// better_sleep(philo->menu->tts * 1000, menu); 
+			better_sleep(philo->menu->tts, menu);
+			//printf(SLEEPING_T, get_time(menu), philo->id);
+			report(philo, get_time(menu));
 			philo->state = THINKING;
 		}
 		else if (philo->state == THINKING)
 		{
-			// existence = terminate(philo);
+			existence = terminate(philo);
+			//printf(THINKING_T, get_time(menu), philo->id);
 			report(philo, get_time(menu));
 			philo->state = EATING;
 		}
 		//printf("philo %i in birth still\n", philo->id);
 		existence = terminate(philo);
-		fat = done_eating(menu);
-		// if (fat == true)
-		// 	printf("I KNOW WE'RE FAT %i\n", philo->id);
 	}
 	//printf("philo %i returning\n", philo->id);
 	return (NULL);

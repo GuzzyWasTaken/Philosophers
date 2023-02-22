@@ -1,530 +1,581 @@
-0 Philosopher 9 has picked up Right fork
-0 Philosopher 9 has picked up Left fork
-0 Philosopher 9 is now eating
-0 Philosopher 1 has picked up Right fork
-0 Philosopher 5 has picked up Right fork
-0 Philosopher 7 has picked up Right fork
-0 Philosopher 5 has picked up Left fork
-0 Philosopher 5 is now eating
-0 Philosopher 7 has picked up Left fork
-0 Philosopher 7 is now eating
-0 Philosopher 3 has picked up Right fork
-0 Philosopher 3 has picked up Left fork
-0 Philosopher 3 is now eating
-0 Philosopher 1 has picked up Left fork
-0 Philosopher 1 is now eating
-202 Philosopher 8 has picked up Right fork
-202 Philosopher 8 has picked up Left fork
-202 Philosopher 8 is now eating
-202 Philosopher 4 has picked up Right fork
-202 Philosopher 4 has picked up Left fork
-202 Philosopher 4 is now eating
-202 Philosopher 6 has picked up Right fork
-202 Philosopher 6 has picked up Left fork
-202 Philosopher 6 is now eating
-202 Philosopher 2 has picked up Right fork
-202 Philosopher 2 has picked up Left fork
-202 Philosopher 2 is now eating
-202 Philosopher 10 has picked up Right fork
-202 Philosopher 10 has picked up Left fork
-202 Philosopher 10 is now eating
-402 Philosopher 9 is now thinking
-402 Philosopher 5 is now thinking
-402 Philosopher 7 is now thinking
-402 Philosopher 3 is now thinking
-402 Philosopher 3 has picked up Right fork
-402 Philosopher 1 is now thinking
-402 Philosopher 1 has picked up Right fork
-402 Philosopher 1 has picked up Left fork
-402 Philosopher 1 is now eating
-402 Philosopher 5 has picked up Right fork
-402 Philosopher 9 has picked up Right fork
-402 Philosopher 9 has picked up Left fork
-402 Philosopher 9 is now eating
-402 Philosopher 5 has picked up Left fork
-402 Philosopher 5 is now eating
-402 Philosopher 3 has picked up Left fork
-402 Philosopher 3 is now eating
-402 Philosopher 7 has picked up Right fork
-402 Philosopher 7 has picked up Left fork
-402 Philosopher 7 is now eating
-604 Philosopher 4 is now thinking
-604 Philosopher 8 is now thinking
-604 Philosopher 2 is now thinking
-604 Philosopher 10 is now thinking
-604 Philosopher 6 is now thinking
-604 Philosopher 6 has picked up Right fork
-604 Philosopher 4 has picked up Right fork
-604 Philosopher 6 has picked up Left fork
-604 Philosopher 4 has picked up Left fork
-604 Philosopher 2 has picked up Right fork
-604 Philosopher 2 has picked up Left fork
-604 Philosopher 2 is now eating
-604 Philosopher 4 is now eating
-604 Philosopher 8 has picked up Right fork
-604 Philosopher 8 has picked up Left fork
-604 Philosopher 8 is now eating
-604 Philosopher 6 is now eating
-604 Philosopher 10 has picked up Right fork
-604 Philosopher 10 has picked up Left fork
-604 Philosopher 10 is now eating
-806 Philosopher 1 is now thinking
-806 Philosopher 9 is now thinking
-806 Philosopher 5 is now thinking
-806 Philosopher 3 is now thinking
-806 Philosopher 7 is now thinking
-806 Philosopher 1 has picked up Right fork
-806 Philosopher 1 has picked up Left fork
-806 Philosopher 1 is now eating
-806 Philosopher 7 has picked up Right fork
-806 Philosopher 3 has picked up Right fork
-806 Philosopher 3 has picked up Left fork
-806 Philosopher 3 is now eating
-806 Philosopher 5 has picked up Right fork
-806 Philosopher 5 has picked up Left fork
-806 Philosopher 5 is now eating
-806 Philosopher 9 has picked up Right fork
-806 Philosopher 9 has picked up Left fork
-806 Philosopher 9 is now eating
-806 Philosopher 7 has picked up Left fork
-806 Philosopher 7 is now eating
-1006 Philosopher 2 is now thinking
-1006 Philosopher 8 is now thinking
-1006 Philosopher 4 is now thinking
-1006 Philosopher 10 is now thinking
-1006 Philosopher 4 has picked up Right fork
-1006 Philosopher 4 has picked up Left fork
-1006 Philosopher 4 is now eating
-1006 Philosopher 10 has picked up Right fork
-1006 Philosopher 6 is now thinking
-1006 Philosopher 8 has picked up Right fork
-1006 Philosopher 8 has picked up Left fork
-1006 Philosopher 8 is now eating
-1006 Philosopher 10 has picked up Left fork
-1006 Philosopher 10 is now eating
-1006 Philosopher 6 has picked up Right fork
-1006 Philosopher 6 has picked up Left fork
-1006 Philosopher 6 is now eating
-1006 Philosopher 2 has picked up Right fork
-1006 Philosopher 2 has picked up Left fork
-1006 Philosopher 2 is now eating
-1206 Philosopher 3 is now thinking
-1206 Philosopher 1 is now thinking
-1206 Philosopher 9 is now thinking
-1207 Philosopher 7 is now thinking
-1206 Philosopher 5 is now thinking
-1207 Philosopher 5 has picked up Right fork
-1207 Philosopher 5 has picked up Left fork
-1207 Philosopher 5 is now eating
-1207 Philosopher 3 has picked up Right fork
-1207 Philosopher 3 has picked up Left fork
-1207 Philosopher 3 is now eating
-1207 Philosopher 7 has picked up Right fork
-1207 Philosopher 7 has picked up Left fork
-1207 Philosopher 7 is now eating
-1207 Philosopher 9 has picked up Right fork
-1207 Philosopher 9 has picked up Left fork
-1207 Philosopher 9 is now eating
-1207 Philosopher 1 has picked up Right fork
-1207 Philosopher 1 has picked up Left fork
-1207 Philosopher 1 is now eating
-1407 Philosopher 4 is now thinking
-1407 Philosopher 10 is now thinking
-1407 Philosopher 6 is now thinking
-1407 Philosopher 2 is now thinking
-1407 Philosopher 8 is now thinking
-1407 Philosopher 8 has picked up Right fork
-1407 Philosopher 8 has picked up Left fork
-1407 Philosopher 4 has picked up Right fork
-1407 Philosopher 4 has picked up Left fork
-1407 Philosopher 4 is now eating
-1407 Philosopher 2 has picked up Right fork
-1407 Philosopher 2 has picked up Left fork
-1407 Philosopher 2 is now eating
-1407 Philosopher 10 has picked up Right fork
-1407 Philosopher 10 has picked up Left fork
-1407 Philosopher 10 is now eating
-1407 Philosopher 6 has picked up Right fork
-1407 Philosopher 6 has picked up Left fork
-1407 Philosopher 6 is now eating
-1407 Philosopher 8 is now eating
-1607 Philosopher 5 is now thinking
-1607 Philosopher 9 is now thinking
-1607 Philosopher 3 is now thinking
-1607 Philosopher 1 is now thinking
-1607 Philosopher 7 is now thinking
-1607 Philosopher 3 has picked up Right fork
-1607 Philosopher 1 has picked up Right fork
-1607 Philosopher 9 has picked up Right fork
-1607 Philosopher 9 has picked up Left fork
-1607 Philosopher 9 is now eating
-1607 Philosopher 1 has picked up Left fork
-1607 Philosopher 5 has picked up Right fork
-1607 Philosopher 5 has picked up Left fork
-1607 Philosopher 5 is now eating
-1607 Philosopher 7 has picked up Right fork
-1607 Philosopher 7 has picked up Left fork
-1607 Philosopher 7 is now eating
-1607 Philosopher 3 has picked up Left fork
-1607 Philosopher 3 is now eating
-1607 Philosopher 1 is now eating
-1811 Philosopher 4 is now thinking
-1811 Philosopher 10 is now thinking
-1811 Philosopher 8 is now thinking
-1811 Philosopher 6 is now thinking
-1811 Philosopher 2 is now thinking
-1811 Philosopher 8 has picked up Right fork
-1811 Philosopher 10 has picked up Right fork
-1811 Philosopher 8 has picked up Left fork
-1811 Philosopher 8 is now eating
-1811 Philosopher 4 has picked up Right fork
-1811 Philosopher 2 has picked up Right fork
-1811 Philosopher 2 has picked up Left fork
-1811 Philosopher 2 is now eating
-1811 Philosopher 4 has picked up Left fork
-1811 Philosopher 4 is now eating
-1811 Philosopher 10 has picked up Left fork
-1811 Philosopher 10 is now eating
-1811 Philosopher 6 has picked up Right fork
-1811 Philosopher 6 has picked up Left fork
-1811 Philosopher 6 is now eating
-2016 Philosopher 5 is now thinking
-2016 Philosopher 3 is now thinking
-2016 Philosopher 7 is now thinking
-2016 Philosopher 9 is now thinking
-2016 Philosopher 1 is now thinking
-2016 Philosopher 1 has picked up Right fork
-2016 Philosopher 1 has picked up Left fork
-2016 Philosopher 3 has picked up Right fork
-2016 Philosopher 1 is now eating
-2016 Philosopher 9 has picked up Right fork
-2016 Philosopher 3 has picked up Left fork
-2016 Philosopher 9 has picked up Left fork
-2016 Philosopher 9 is now eating
-2016 Philosopher 3 is now eating
-2016 Philosopher 7 has picked up Right fork
-2016 Philosopher 7 has picked up Left fork
-2016 Philosopher 7 is now eating
-2016 Philosopher 5 has picked up Right fork
-2016 Philosopher 5 has picked up Left fork
-2016 Philosopher 5 is now eating
-2218 Philosopher 8 is now thinking
-2218 Philosopher 2 is now thinking
-2218 Philosopher 10 is now thinking
-2218 Philosopher 4 is now thinking
-2218 Philosopher 4 has picked up Right fork
-2218 Philosopher 4 has picked up Left fork
-2218 Philosopher 4 is now eating
-2218 Philosopher 6 is now thinking
-2218 Philosopher 6 has picked up Right fork
-2218 Philosopher 8 has picked up Right fork
-2218 Philosopher 10 has picked up Right fork
-2218 Philosopher 10 has picked up Left fork
-2218 Philosopher 10 is now eating
-2218 Philosopher 8 has picked up Left fork
-2218 Philosopher 8 is now eating
-2218 Philosopher 2 has picked up Right fork
-2218 Philosopher 2 has picked up Left fork
-2218 Philosopher 2 is now eating
-2218 Philosopher 6 has picked up Left fork
-2218 Philosopher 6 is now eating
-2419 Philosopher 1 is now thinking
-2419 Philosopher 7 is now thinking
-2419 Philosopher 3 is now thinking
-2419 Philosopher 5 is now thinking
-2419 Philosopher 9 is now thinking
-2419 Philosopher 9 has picked up Right fork
-2419 Philosopher 9 has picked up Left fork
-2419 Philosopher 3 has picked up Right fork
-2419 Philosopher 3 has picked up Left fork
-2419 Philosopher 3 is now eating
-2419 Philosopher 1 has picked up Right fork
-2419 Philosopher 1 has picked up Left fork
-2419 Philosopher 1 is now eating
-2419 Philosopher 5 has picked up Right fork
-2419 Philosopher 5 has picked up Left fork
-2419 Philosopher 5 is now eating
-2419 Philosopher 7 has picked up Right fork
-2419 Philosopher 7 has picked up Left fork
-2419 Philosopher 7 is now eating
-2419 Philosopher 9 is now eating
-2619 Philosopher 4 is now thinking
-2619 Philosopher 8 is now thinking
-2619 Philosopher 2 is now thinking
-2619 Philosopher 6 is now thinking
-2619 Philosopher 10 is now thinking
-2619 Philosopher 4 has picked up Right fork
-2619 Philosopher 4 has picked up Left fork
-2619 Philosopher 4 is now eating
-2619 Philosopher 6 has picked up Right fork
-2619 Philosopher 6 has picked up Left fork
-2619 Philosopher 6 is now eating
-2619 Philosopher 8 has picked up Right fork
-2619 Philosopher 8 has picked up Left fork
-2619 Philosopher 8 is now eating
-2619 Philosopher 2 has picked up Right fork
-2619 Philosopher 2 has picked up Left fork
-2619 Philosopher 2 is now eating
-2619 Philosopher 10 has picked up Right fork
-2619 Philosopher 10 has picked up Left fork
-2619 Philosopher 10 is now eating
-2819 Philosopher 3 is now thinking
-2819 Philosopher 1 is now thinking
-2819 Philosopher 5 is now thinking
-2819 Philosopher 7 is now thinking
-2819 Philosopher 9 is now thinking
-2819 Philosopher 3 has picked up Right fork
-2819 Philosopher 3 has picked up Left fork
-2819 Philosopher 3 is now eating
-2819 Philosopher 5 has picked up Right fork
-2819 Philosopher 5 has picked up Left fork
-2819 Philosopher 5 is now eating
-2819 Philosopher 7 has picked up Right fork
-2819 Philosopher 7 has picked up Left fork
-2819 Philosopher 7 is now eating
-2819 Philosopher 1 has picked up Right fork
-2819 Philosopher 1 has picked up Left fork
-2819 Philosopher 1 is now eating
-2819 Philosopher 9 has picked up Right fork
-2819 Philosopher 9 has picked up Left fork
-2819 Philosopher 9 is now eating
-3019 Philosopher 4 is now thinking
-3019 Philosopher 2 is now thinking
-3019 Philosopher 2 has picked up Right fork
-3019 Philosopher 8 is now thinking
-3019 Philosopher 4 has picked up Right fork
-3019 Philosopher 4 has picked up Left fork
-3019 Philosopher 2 has picked up Left fork
-3019 Philosopher 2 is now eating
-3019 Philosopher 6 is now thinking
-3019 Philosopher 6 has picked up Right fork
-3019 Philosopher 10 is now thinking
-3019 Philosopher 10 has picked up Right fork
-3019 Philosopher 8 has picked up Right fork
-3019 Philosopher 8 has picked up Left fork
-3019 Philosopher 8 is now eating
-3019 Philosopher 10 has picked up Left fork
-3019 Philosopher 10 is now eating
-3019 Philosopher 4 is now eating
-3019 Philosopher 6 has picked up Left fork
-3019 Philosopher 6 is now eating
-3220 Philosopher 5 is now thinking
-3220 Philosopher 7 is now thinking
-3220 Philosopher 9 is now thinking
-3220 Philosopher 1 is now thinking
-3220 Philosopher 1 has picked up Right fork
-3220 Philosopher 3 is now thinking
-3220 Philosopher 3 has picked up Right fork
-3220 Philosopher 3 has picked up Left fork
-3220 Philosopher 7 has picked up Right fork
-3220 Philosopher 7 has picked up Left fork
-3220 Philosopher 7 is now eating
-3220 Philosopher 1 has picked up Left fork
-3220 Philosopher 1 is now eating
-3220 Philosopher 5 has picked up Right fork
-3220 Philosopher 3 is now eating
-3220 Philosopher 9 has picked up Right fork
-3220 Philosopher 9 has picked up Left fork
-3220 Philosopher 9 is now eating
-3220 Philosopher 5 has picked up Left fork
-3220 Philosopher 5 is now eating
-3421 Philosopher 2 is now thinking
-3421 Philosopher 8 is now thinking
-3421 Philosopher 10 is now thinking
-3421 Philosopher 4 is now thinking
-3421 Philosopher 6 is now thinking
-3421 Philosopher 6 has picked up Right fork
-3421 Philosopher 6 has picked up Left fork
-3421 Philosopher 6 is now eating
-3421 Philosopher 8 has picked up Right fork
-3421 Philosopher 8 has picked up Left fork
-3421 Philosopher 8 is now eating
-3421 Philosopher 10 has picked up Right fork
-3421 Philosopher 10 has picked up Left fork
-3421 Philosopher 10 is now eating
-3421 Philosopher 2 has picked up Right fork
-3421 Philosopher 2 has picked up Left fork
-3421 Philosopher 2 is now eating
-3421 Philosopher 4 has picked up Right fork
-3421 Philosopher 4 has picked up Left fork
-3421 Philosopher 4 is now eating
-3621 Philosopher 7 is now thinking
-3621 Philosopher 1 is now thinking
-3621 Philosopher 3 is now thinking
-3621 Philosopher 9 is now thinking
-3621 Philosopher 5 is now thinking
-3621 Philosopher 5 has picked up Right fork
-3621 Philosopher 5 has picked up Left fork
-3621 Philosopher 5 is now eating
-3621 Philosopher 7 has picked up Right fork
-3621 Philosopher 7 has picked up Left fork
-3621 Philosopher 7 is now eating
-3621 Philosopher 9 has picked up Right fork
-3621 Philosopher 9 has picked up Left fork
-3621 Philosopher 9 is now eating
-3621 Philosopher 1 has picked up Right fork
-3621 Philosopher 1 has picked up Left fork
-3621 Philosopher 1 is now eating
-3621 Philosopher 3 has picked up Right fork
-3621 Philosopher 3 has picked up Left fork
-3621 Philosopher 3 is now eating
-3821 Philosopher 6 is now thinking
-3821 Philosopher 8 is now thinking
-3821 Philosopher 2 is now thinking
-3821 Philosopher 4 is now thinking
-3821 Philosopher 10 is now thinking
-3821 Philosopher 4 has picked up Right fork
-3821 Philosopher 4 has picked up Left fork
-3821 Philosopher 8 has picked up Right fork
-3821 Philosopher 8 has picked up Left fork
-3821 Philosopher 8 is now eating
-3821 Philosopher 4 is now eating
-3821 Philosopher 10 has picked up Right fork
-3821 Philosopher 6 has picked up Right fork
-3821 Philosopher 2 has picked up Right fork
-3821 Philosopher 2 has picked up Left fork
-3821 Philosopher 2 is now eating
-3821 Philosopher 6 has picked up Left fork
-3821 Philosopher 6 is now eating
-3821 Philosopher 10 has picked up Left fork
-3821 Philosopher 10 is now eating
-4025 Philosopher 5 is now thinking
-4025 Philosopher 7 is now thinking
-4025 Philosopher 1 is now thinking
-4025 Philosopher 3 is now thinking
-4025 Philosopher 9 is now thinking
-4025 Philosopher 9 has picked up Right fork
-4025 Philosopher 9 has picked up Left fork
-4025 Philosopher 9 is now eating
-4025 Philosopher 7 has picked up Right fork
-4025 Philosopher 1 has picked up Right fork
-4025 Philosopher 1 has picked up Left fork
-4025 Philosopher 1 is now eating
-4025 Philosopher 5 has picked up Right fork
-4025 Philosopher 5 has picked up Left fork
-4025 Philosopher 5 is now eating
-4025 Philosopher 7 has picked up Left fork
-4025 Philosopher 7 is now eating
-4025 Philosopher 3 has picked up Right fork
-4025 Philosopher 3 has picked up Left fork
-4025 Philosopher 3 is now eating
-4225 Philosopher 8 is now thinking
-4225 Philosopher 4 is now thinking
-4225 Philosopher 6 is now thinking
-4225 Philosopher 10 is now thinking
-4225 Philosopher 2 is now thinking
-4225 Philosopher 10 has picked up Right fork
-4225 Philosopher 10 has picked up Left fork
-4225 Philosopher 4 has picked up Right fork
-4225 Philosopher 4 has picked up Left fork
-4225 Philosopher 6 has picked up Right fork
-4225 Philosopher 2 has picked up Right fork
-4225 Philosopher 2 has picked up Left fork
-4225 Philosopher 10 is now eating
-4225 Philosopher 2 is now eating
-4225 Philosopher 4 is now eating
-4225 Philosopher 6 has picked up Left fork
-4225 Philosopher 6 is now eating
-4225 Philosopher 8 has picked up Right fork
-4225 Philosopher 8 has picked up Left fork
-4225 Philosopher 8 is now eating
-4427 Philosopher 9 is now thinking
-4427 Philosopher 5 is now thinking
-4427 Philosopher 1 is now thinking
-4427 Philosopher 3 is now thinking
-4427 Philosopher 7 is now thinking
-4427 Philosopher 9 has picked up Right fork
-4427 Philosopher 9 has picked up Left fork
-4427 Philosopher 1 has picked up Right fork
-4427 Philosopher 5 has picked up Right fork
-4427 Philosopher 3 has picked up Right fork
-4427 Philosopher 3 has picked up Left fork
-4427 Philosopher 3 is now eating
-4427 Philosopher 5 has picked up Left fork
-4427 Philosopher 7 has picked up Right fork
-4427 Philosopher 5 is now eating
-4427 Philosopher 7 has picked up Left fork
-4427 Philosopher 7 is now eating
-4427 Philosopher 1 has picked up Left fork
-4427 Philosopher 1 is now eating
-4427 Philosopher 9 is now eating
-4630 Philosopher 10 is now thinking
-4630 Philosopher 2 is now thinking
-4630 Philosopher 4 is now thinking
-4630 Philosopher 6 is now thinking
-4630 Philosopher 8 is now thinking
-4630 Philosopher 4 has picked up Right fork
-4630 Philosopher 2 has picked up Right fork
-4630 Philosopher 2 has picked up Left fork
-4630 Philosopher 2 is now eating
-4630 Philosopher 10 has picked up Right fork
-4630 Philosopher 8 has picked up Right fork
-4630 Philosopher 8 has picked up Left fork
-4630 Philosopher 6 has picked up Right fork
-4630 Philosopher 4 has picked up Left fork
-4630 Philosopher 10 has picked up Left fork
-4630 Philosopher 10 is now eating
-4630 Philosopher 8 is now eating
-4630 Philosopher 6 has picked up Left fork
-4630 Philosopher 6 is now eating
-4630 Philosopher 4 is now eating
-4835 Philosopher 5 is now thinking
-4835 Philosopher 3 is now thinking
-4835 Philosopher 9 is now thinking
-4835 Philosopher 1 is now thinking
-4835 Philosopher 7 is now thinking
-4835 Philosopher 7 has picked up Right fork
-4835 Philosopher 7 has picked up Left fork
-4835 Philosopher 7 is now eating
-4835 Philosopher 1 has picked up Right fork
-4835 Philosopher 1 has picked up Left fork
-4835 Philosopher 1 is now eating
-4835 Philosopher 9 has picked up Right fork
-4835 Philosopher 3 has picked up Right fork
-4835 Philosopher 3 has picked up Left fork
-4835 Philosopher 3 is now eating
-4835 Philosopher 9 has picked up Left fork
-4835 Philosopher 9 is now eating
-4835 Philosopher 5 has picked up Right fork
-4835 Philosopher 5 has picked up Left fork
-4835 Philosopher 5 is now eating
-5036 Philosopher 2 is now thinking
-5037 Philosopher 10 is now thinking
-5037 Philosopher 8 is now thinking
-5037 Philosopher 4 is now thinking
-5037 Philosopher 6 is now thinking
-5037 Philosopher 6 has picked up Right fork
-5037 Philosopher 10 has picked up Right fork
-5037 Philosopher 10 has picked up Left fork
-5037 Philosopher 10 is now eating
-5037 Philosopher 2 has picked up Right fork
-5037 Philosopher 2 has picked up Left fork
-5037 Philosopher 2 is now eating
-5037 Philosopher 8 has picked up Right fork
-5037 Philosopher 8 has picked up Left fork
-5037 Philosopher 8 is now eating
-5037 Philosopher 6 has picked up Left fork
-5037 Philosopher 6 is now eating
-5037 Philosopher 4 has picked up Right fork
-5037 Philosopher 4 has picked up Left fork
-5037 Philosopher 4 is now eating
-5241 Philosopher 7 is now thinking
-5241 Philosopher 3 is now thinking
-5241 Philosopher 1 is now thinking
-5241 Philosopher 9 is now thinking
-5241 Philosopher 5 is now thinking
-5241 Philosopher 9 has picked up Right fork
-5241 Philosopher 5 has picked up Right fork
-5241 Philosopher 5 has picked up Left fork
-5241 Philosopher 5 is now eating
-5241 Philosopher 1 has picked up Right fork
-5241 Philosopher 7 has picked up Right fork
-5241 Philosopher 7 has picked up Left fork
-5241 Philosopher 9 has picked up Left fork
-5241 Philosopher 9 is now eating
-5241 Philosopher 7 is now eating
-5241 Philosopher 1 has picked up Left fork
-5241 Philosopher 1 is now eating
-5241 Philosopher 3 has picked up Right fork
-5241 Philosopher 3 has picked up Left fork
-5242 Ph
+1 Philosopher 1 has picked up Right fork
+1 Philosopher 1 has picked up Left fork
+1 Philosopher 1 is now eating
+1 Philosopher 3 has picked up Right fork
+1 Philosopher 3 has picked up Left fork
+1 Philosopher 3 is now eating
+1 Philosopher 5 has picked up Right fork
+1 Philosopher 5 has picked up Left fork
+1 Philosopher 5 is now eating
+1 Philosopher 7 has picked up Right fork
+1 Philosopher 7 has picked up Left fork
+1 Philosopher 7 is now eating
+1 Philosopher 9 has picked up Right fork
+1 Philosopher 9 has picked up Left fork
+1 Philosopher 9 is now eating
+1 Philosopher 11 has picked up Right fork
+1 Philosopher 11 has picked up Left fork
+1 Philosopher 11 is now eating
+1 Philosopher 13 has picked up Right fork
+1 Philosopher 13 has picked up Left fork
+1 Philosopher 13 is now eating
+1 Philosopher 15 has picked up Right fork
+1 Philosopher 15 has picked up Left fork
+1 Philosopher 15 is now eating
+1 Philosopher 17 has picked up Right fork
+1 Philosopher 17 has picked up Left fork
+1 Philosopher 17 is now eating
+1 Philosopher 19 has picked up Right fork
+1 Philosopher 19 has picked up Left fork
+1 Philosopher 19 is now eating
+philo 1 in birth still
+philo 3 in birth still
+401 Philosopher 20 has picked up Right fork
+401 Philosopher 2 has picked up Right fork
+401 Philosopher 2 has picked up Left fork
+401 Philosopher 2 is now eating
+philo 7 in birth still
+philo 5 in birth still
+philo 9 in birth still
+philo 11 in birth still
+philo 13 in birth still
+philo 17 in birth still
+philo 15 in birth still
+philo 19 in birth still
+402 Philosopher 6 has picked up Right fork
+402 Philosopher 20 has picked up Left fork
+402 Philosopher 18 has picked up Right fork
+402 Philosopher 8 has picked up Right fork
+402 Philosopher 18 has picked up Left fork
+402 Philosopher 8 has picked up Left fork
+402 Philosopher 18 is now eating
+402 Philosopher 10 has picked up Right fork
+402 Philosopher 10 has picked up Left fork
+402 Philosopher 14 has picked up Right fork
+402 Philosopher 14 has picked up Left fork
+402 Philosopher 14 is now eating
+402 Philosopher 4 has picked up Right fork
+402 Philosopher 8 is now eating
+402 Philosopher 4 has picked up Left fork
+402 Philosopher 12 has picked up Right fork
+402 Philosopher 12 has picked up Left fork
+402 Philosopher 10 is now eating
+402 Philosopher 12 is now eating
+402 Philosopher 4 is now eating
+402 Philosopher 6 has picked up Left fork
+402 Philosopher 6 is now eating
+402 Philosopher 16 has picked up Right fork
+402 Philosopher 16 has picked up Left fork
+402 Philosopher 16 is now eating
+402 Philosopher 20 is now eating
+801 Philosopher 3 is now sleeping
+philo 3 in birth still
+801 Philosopher 3 is now thinking
+philo 3 in birth still
+801 Philosopher 1 is now sleeping
+philo 1 in birth still
+801 Philosopher 1 is now thinking
+philo 1 in birth still
+philo 2 in birth still
+801 Philosopher 1 has picked up Right fork
+802 Philosopher 7 is now sleeping
+philo 7 in birth still
+802 Philosopher 7 is now thinking
+philo 7 in birth still
+802 Philosopher 11 is now sleeping
+philo 11 in birth still
+802 Philosopher 11 is now thinking
+philo 11 in birth still
+802 Philosopher 9 is now sleeping
+philo 9 in birth still
+802 Philosopher 9 is now thinking
+philo 9 in birth still
+802 Philosopher 15 is now sleeping
+philo 15 in birth still
+802 Philosopher 15 is now thinking
+philo 15 in birth still
+802 Philosopher 5 is now sleeping
+philo 5 in birth still
+802 Philosopher 5 is now thinking
+philo 5 in birth still
+802 Philosopher 13 is now sleeping
+philo 13 in birth still
+802 Philosopher 13 is now thinking
+philo 13 in birth still
+802 Philosopher 19 is now sleeping
+philo 19 in birth still
+802 Philosopher 19 is now thinking
+philo 19 in birth still
+802 Philosopher 17 is now sleeping
+philo 17 in birth still
+802 Philosopher 17 is now thinking
+philo 17 in birth still
+philo 18 in birth still
+philo 14 in birth still
+philo 8 in birth still
+philo 10 in birth still
+philo 12 in birth still
+philo 16 in birth still
+philo 6 in birth still
+802 Philosopher 17 has picked up Right fork
+802 Philosopher 17 has picked up Left fork
+802 Philosopher 17 is now eating
+philo 20 in birth still
+802 Philosopher 13 has picked up Right fork
+802 Philosopher 13 has picked up Left fork
+802 Philosopher 13 is now eating
+philo 4 in birth still
+802 Philosopher 7 has picked up Right fork
+802 Philosopher 7 has picked up Left fork
+802 Philosopher 7 is now eating
+802 Philosopher 9 has picked up Right fork
+802 Philosopher 9 has picked up Left fork
+802 Philosopher 9 is now eating
+802 Philosopher 11 has picked up Right fork
+802 Philosopher 11 has picked up Left fork
+802 Philosopher 11 is now eating
+802 Philosopher 3 has picked up Right fork
+802 Philosopher 3 has picked up Left fork
+802 Philosopher 3 is now eating
+802 Philosopher 5 has picked up Right fork
+802 Philosopher 15 has picked up Right fork
+802 Philosopher 5 has picked up Left fork
+802 Philosopher 5 is now eating
+802 Philosopher 15 has picked up Left fork
+802 Philosopher 15 is now eating
+802 Philosopher 19 has picked up Right fork
+802 Philosopher 19 has picked up Left fork
+802 Philosopher 19 is now eating
+802 Philosopher 1 has picked up Left fork
+802 Philosopher 1 is now eating
+1201 Philosopher 2 is now sleeping
+philo 2 in birth still
+1201 Philosopher 2 is now thinking
+philo 2 in birth still
+1202 Philosopher 14 is now sleeping
+philo 14 in birth still
+1202 Philosopher 14 is now thinking
+philo 14 in birth still
+1202 Philosopher 18 is now sleeping
+philo 18 in birth still
+1202 Philosopher 18 is now thinking
+philo 18 in birth still
+1202 Philosopher 16 is now sleeping
+philo 16 in birth still
+1202 Philosopher 10 is now sleeping
+philo 10 in birth still
+1202 Philosopher 4 is now sleeping
+1202 Philosopher 20 is now sleeping
+philo 20 in birth still
+1202 Philosopher 6 is now sleeping
+philo 6 in birth still
+1202 Philosopher 6 is now thinking
+philo 6 in birth still
+1202 Philosopher 16 is now thinking
+philo 16 in birth still
+1202 Philosopher 10 is now thinking
+philo 4 in birth still
+1202 Philosopher 4 is now thinking
+philo 10 in birth still
+philo 4 in birth still
+1202 Philosopher 12 is now sleeping
+philo 12 in birth still
+1202 Philosopher 12 is now thinking
+philo 12 in birth still
+1202 Philosopher 8 is now sleeping
+philo 8 in birth still
+1202 Philosopher 8 is now thinking
+philo 8 in birth still
+1202 Philosopher 20 is now thinking
+philo 20 in birth still
+philo 17 in birth still
+philo 13 in birth still
+philo 7 in birth still
+philo 9 in birth still
+philo 11 in birth still
+philo 3 in birth still
+philo 15 in birth still
+philo 19 in birth still
+1203 Philosopher 16 has picked up Right fork
+1203 Philosopher 16 has picked up Left fork
+philo 1 in birth still
+1203 Philosopher 16 is now eating
+1203 Philosopher 12 has picked up Right fork
+1203 Philosopher 12 has picked up Left fork
+1203 Philosopher 12 is now eating
+1203 Philosopher 8 has picked up Right fork
+1203 Philosopher 8 has picked up Left fork
+1203 Philosopher 6 has picked up Right fork
+1203 Philosopher 10 has picked up Right fork
+1203 Philosopher 10 has picked up Left fork
+1203 Philosopher 10 is now eating
+1203 Philosopher 6 has picked up Left fork
+1203 Philosopher 4 has picked up Right fork
+1203 Philosopher 4 has picked up Left fork
+1203 Philosopher 6 is now eating
+philo 5 in birth still
+1203 Philosopher 18 has picked up Right fork
+1203 Philosopher 8 is now eating
+1203 Philosopher 18 has picked up Left fork
+1203 Philosopher 18 is now eating
+1203 Philosopher 4 is now eating
+1203 Philosopher 14 has picked up Right fork
+1203 Philosopher 2 has picked up Right fork
+1203 Philosopher 2 has picked up Left fork
+1203 Philosopher 2 is now eating
+1203 Philosopher 14 has picked up Left fork
+1203 Philosopher 14 is now eating
+1203 Philosopher 20 has picked up Right fork
+1203 Philosopher 20 has picked up Left fork
+1203 Philosopher 20 is now eating
+1603 Philosopher 17 is now sleeping
+philo 17 in birth still
+1603 Philosopher 19 is now sleeping
+1603 Philosopher 7 is now sleeping
+philo 19 in birth still
+1603 Philosopher 19 is now thinking
+philo 7 in birth still
+philo 19 in birth still
+1603 Philosopher 11 is now sleeping
+philo 11 in birth still
+1603 Philosopher 11 is now thinking
+philo 11 in birth still
+1603 Philosopher 5 is now sleeping
+1603 Philosopher 1 is now sleeping
+philo 1 in birth still
+1603 Philosopher 1 is now thinking
+philo 1 in birth still
+philo 5 in birth still
+1603 Philosopher 5 is now thinking
+philo 5 in birth still
+1603 Philosopher 15 is now sleeping
+philo 15 in birth still
+1603 Philosopher 15 is now thinking
+philo 15 in birth still
+1603 Philosopher 9 is now sleeping
+1603 Philosopher 17 is now thinking
+philo 9 in birth still
+1603 Philosopher 9 is now thinking
+philo 17 in birth still
+philo 9 in birth still
+1603 Philosopher 13 is now sleeping
+1603 Philosopher 3 is now sleeping
+philo 3 in birth still
+1603 Philosopher 3 is now thinking
+philo 3 in birth still
+philo 13 in birth still
+1603 Philosopher 7 is now thinking
+philo 7 in birth still
+1603 Philosopher 13 is now thinking
+philo 13 in birth still
+philo 16 in birth still
+philo 10 in birth still
+philo 6 in birth still
+philo 12 in birth still
+philo 8 in birth still
+philo 18 in birth still
+philo 14 in birth still
+philo 20 in birth still
+1606 Philosopher 15 has picked up Right fork
+1606 Philosopher 15 has picked up Left fork
+1606 Philosopher 15 is now eating
+1606 Philosopher 5 has picked up Right fork
+1606 Philosopher 5 has picked up Left fork
+1606 Philosopher 5 is now eating
+1606 Philosopher 11 has picked up Right fork
+1606 Philosopher 11 has picked up Left fork
+1606 Philosopher 11 is now eating
+1606 Philosopher 3 has picked up Right fork
+philo 4 in birth still
+1606 Philosopher 3 has picked up Left fork
+1606 Philosopher 3 is now eating
+1606 Philosopher 17 has picked up Right fork
+1606 Philosopher 13 has picked up Right fork
+philo 2 in birth still
+1606 Philosopher 13 has picked up Left fork
+1606 Philosopher 19 has picked up Right fork
+1606 Philosopher 19 has picked up Left fork
+1606 Philosopher 19 is now eating
+1606 Philosopher 13 is now eating
+1606 Philosopher 7 has picked up Right fork
+1606 Philosopher 7 has picked up Left fork
+1606 Philosopher 17 has picked up Left fork
+1606 Philosopher 17 is now eating
+1606 Philosopher 7 is now eating
+1606 Philosopher 1 has picked up Right fork
+1606 Philosopher 1 has picked up Left fork
+1606 Philosopher 1 is now eating
+1606 Philosopher 9 has picked up Right fork
+1606 Philosopher 9 has picked up Left fork
+1606 Philosopher 9 is now eating
+2006 Philosopher 10 is now sleeping
+2006 Philosopher 18 is now sleeping
+2006 Philosopher 16 is now sleeping
+philo 18 in birth still
+2006 Philosopher 20 is now sleeping
+philo 16 in birth still
+2006 Philosopher 16 is now thinking
+philo 20 in birth still
+2006 Philosopher 20 is now thinking
+philo 16 in birth still
+philo 20 in birth still
+2006 Philosopher 12 is now sleeping
+2006 Philosopher 14 is now sleeping
+philo 14 in birth still
+philo 12 in birth still
+2006 Philosopher 14 is now thinking
+philo 14 in birth still
+philo 10 in birth still
+2006 Philosopher 10 is now thinking
+2006 Philosopher 4 is now sleeping
+philo 10 in birth still
+philo 4 in birth still
+2006 Philosopher 4 is now thinking
+philo 4 in birth still
+2006 Philosopher 2 is now sleeping
+philo 2 in birth still
+2006 Philosopher 12 is now thinking
+philo 12 in birth still
+2006 Philosopher 8 is now sleeping
+philo 8 in birth still
+2006 Philosopher 8 is now thinking
+philo 8 in birth still
+philo 15 in birth still
+2006 Philosopher 6 is now sleeping
+philo 6 in birth still
+2006 Philosopher 6 is now thinking
+philo 5 in birth still
+2006 Philosopher 4 has picked up Right fork
+philo 11 in birth still
+philo 3 in birth still
+philo 19 in birth still
+2006 Philosopher 4 has picked up Left fork
+philo 13 in birth still
+philo 7 in birth still
+philo 17 in birth still
+philo 6 in birth still
+2006 Philosopher 4 is now eating
+2006 Philosopher 10 has picked up Right fork
+2006 Philosopher 2 is now thinking
+philo 2 in birth still
+2006 Philosopher 2 has picked up Right fork
+2006 Philosopher 18 is now thinking
+philo 18 in birth still
+2006 Philosopher 18 has picked up Right fork
+2006 Philosopher 18 has picked up Left fork
+2006 Philosopher 18 is now eating
+2006 Philosopher 6 has picked up Right fork
+2006 Philosopher 6 has picked up Left fork
+2006 Philosopher 6 is now eating
+2006 Philosopher 14 has picked up Right fork
+2006 Philosopher 14 has picked up Left fork
+2006 Philosopher 14 is now eating
+2006 Philosopher 16 has picked up Right fork
+2006 Philosopher 16 has picked up Left fork
+2006 Philosopher 16 is now eating
+2006 Philosopher 12 has picked up Right fork
+2006 Philosopher 12 has picked up Left fork
+2006 Philosopher 12 is now eating
+philo 1 in birth still
+2006 Philosopher 2 has picked up Left fork
+2006 Philosopher 2 is now eating
+2006 Philosopher 20 has picked up Right fork
+2006 Philosopher 20 has picked up Left fork
+2006 Philosopher 20 is now eating
+2006 Philosopher 10 has picked up Left fork
+2006 Philosopher 10 is now eating
+philo 9 in birth still
+2006 Philosopher 8 has picked up Right fork
+2006 Philosopher 8 has picked up Left fork
+2006 Philosopher 8 is now eating
+2406 Philosopher 7 is now sleeping
+2406 Philosopher 1 is now sleeping
+2406 Philosopher 11 is now sleeping
+2406 Philosopher 9 is now sleeping
+philo 7 in birth still
+philo 9 in birth still
+2406 Philosopher 9 is now thinking
+philo 11 in birth still
+2406 Philosopher 11 is now thinking
+philo 1 in birth still
+philo 9 in birth still
+philo 11 in birth still
+2406 Philosopher 19 is now sleeping
+philo 19 in birth still
+2406 Philosopher 19 is now thinking
+philo 19 in birth still
+2406 Philosopher 15 is now sleeping
+philo 15 in birth still
+2406 Philosopher 15 is now thinking
+philo 15 in birth still
+2406 Philosopher 13 is now sleeping
+2406 Philosopher 7 is now thinking
+philo 13 in birth still
+2406 Philosopher 13 is now thinking
+philo 7 in birth still
+philo 13 in birth still
+2406 Philosopher 17 is now sleeping
+philo 17 in birth still
+2406 Philosopher 17 is now thinking
+philo 17 in birth still
+2406 Philosopher 1 is now thinking
+philo 1 in birth still
+2406 Philosopher 5 is now sleeping
+philo 5 in birth still
+2406 Philosopher 3 is now sleeping
+philo 3 in birth still
+2406 Philosopher 3 is now thinking
+philo 3 in birth still
+2406 Philosopher 5 is now thinking
+philo 5 in birth still
+philo 4 in birth still
+philo 18 in birth still
+philo 14 in birth still
+philo 16 in birth still
+philo 6 in birth still
+philo 20 in birth still
+philo 12 in birth still
+philo 8 in birth still
+philo 10 in birth still
+philo 2 in birth still
+2411 Philosopher 3 has picked up Right fork
+2411 Philosopher 13 has picked up Right fork
+2411 Philosopher 3 has picked up Left fork
+2411 Philosopher 13 has picked up Left fork
+2411 Philosopher 3 is now eating
+2411 Philosopher 19 has picked up Right fork
+2411 Philosopher 1 has picked up Right fork
+2411 Philosopher 19 has picked up Left fork
+2411 Philosopher 9 has picked up Right fork
+2411 Philosopher 7 has picked up Right fork
+2411 Philosopher 9 has picked up Left fork
+2411 Philosopher 9 is now eating
+2411 Philosopher 7 has picked up Left fork
+2411 Philosopher 15 has picked up Right fork
+2411 Philosopher 15 has picked up Left fork
+2411 Philosopher 15 is now eating
+2411 Philosopher 7 is now eating
+2411 Philosopher 11 has picked up Right fork
+2411 Philosopher 11 has picked up Left fork
+2411 Philosopher 13 is now eating
+2411 Philosopher 11 is now eating
+2411 Philosopher 19 is now eating
+2411 Philosopher 1 has picked up Left fork
+2411 Philosopher 1 is now eating
+2411 Philosopher 17 has picked up Right fork
+2411 Philosopher 17 has picked up Left fork
+2411 Philosopher 17 is now eating
+2411 Philosopher 5 has picked up Right fork
+2411 Philosopher 5 has picked up Left fork
+2411 Philosopher 5 is now eating
+2811 Philosopher 4 is now sleeping
+2811 Philosopher 12 is now sleeping
+philo 12 in birth still
+philo 4 in birth still
+2811 Philosopher 6 is now sleeping
+philo 6 in birth still
+2811 Philosopher 6 is now thinking
+philo 6 in birth still
+2811 Philosopher 20 is now sleeping
+philo 20 in birth still
+2811 Philosopher 20 is now thinking
+philo 20 in birth still
+2811 Philosopher 2 is now sleeping
+philo 2 in birth still
+2811 Philosopher 2 is now thinking
+philo 2 in birth still
+2811 Philosopher 12 is now thinking
+philo 12 in birth still
+2811 Philosopher 4 is now thinking
+philo 4 in birth still
+2811 Philosopher 14 is now sleeping
+philo 14 in birth still
+2811 Philosopher 14 is now thinking
+philo 14 in birth still
+2811 Philosopher 8 is now sleeping
+philo 8 in birth still
+2811 Philosopher 8 is now thinking
+philo 8 in birth still
+2811 Philosopher 18 is now sleeping
+philo 18 in birth still
+2811 Philosopher 18 is now thinking
+philo 18 in birth still
+2811 Philosopher 10 is now sleeping
+philo 10 in birth still
+2811 Philosopher 10 is now thinking
+philo 10 in birth still
+2811 Philosopher 16 is now sleeping
+philo 16 in birth still
+2811 Philosopher 16 is now thinking
+philo 16 in birth still
+philo 3 in birth still
+philo 9 in birth still
+philo 15 in birth still
+philo 19 in birth still
+philo 7 in birth still
+philo 13 in birth still
+philo 11 in birth still
+philo 17 in birth still
+2812 Philosopher 2 has picked up Right fork
+2812 Philosopher 14 has picked up Right fork
+2812 Philosopher 2 has picked up Left fork
+2812 Philosopher 2 is now eating
+2812 Philosopher 14 has picked up Left fork
+2812 Philosopher 18 has picked up Right fork
+2812 Philosopher 6 has picked up Right fork
+2812 Philosopher 12 has picked up Right fork
+2812 Philosopher 12 has picked up Left fork
+2812 Philosopher 12 is now eating
+2812 Philosopher 6 has picked up Left fork
+2813 Philosopher 16 has picked up Right fork
+philo 5 in birth still
+2813 Philosopher 4 has picked up Right fork
+2813 Philosopher 8 has picked up Right fork
+2813 Philosopher 4 has picked up Left fork
+2813 Philosopher 8 has picked up Left fork
+2813 Philosopher 8 is now eating
+2813 Philosopher 4 is now eating
+2813 Philosopher 6 is now eating
+2813 Philosopher 14 is now eating
+2813 Philosopher 16 has picked up Left fork
+philo 1 in birth still
+2813 Philosopher 20 has picked up Right fork
+2813 Philosopher 20 has picked up Left fork
+2813 Philosopher 20 is now eating
+2813 Philosopher 16 is now eating
+2813 Philosopher 10 has picked up Right fork
+2813 Philosopher 10 has picked up Left fork
+2813 Philosopher 10 is now eating
+2813 Philosopher 18 has picked up Left fork
+2813 Philosopher 18 is now eating
+ALL DONE EATING
+3212 Philosopher 15 is now sleeping
+3212 Philosopher 13 is now sleeping
+philo 13 in birth still
+philo 15 in birth still
+3212 Philosopher 7 is now sleeping
+philo 7 in birth still
+3212 Philosopher 19 is now sleeping
+philo 19 in birth still
+3212 Philosopher 11 is now sleeping
+3212 Philosopher 3 is now sleeping
+philo 11 in birth still
+philo 3 in birth still
+3212 Philosopher 9 is now sleeping
+philo 9 in birth still
+3212 Philosopher 17 is now sleeping
+philo 17 in birth still
+3213 Philosopher 5 is now sleeping
+philo 5 in birth still
+3213 Philosopher 1 is now sleeping
+philo 1 in birth still
+philo 2 in birth still
+philo 8 in birth still
+philo 4 in birth still
+philo 12 in birth still
+philo 20 in birth still
+philo 16 in birth still
+philo 10 in birth still
+philo 18 in birth still
+philo 6 in birth still
+philo 14 in birth still
