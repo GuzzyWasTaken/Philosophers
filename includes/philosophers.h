@@ -1,5 +1,17 @@
-#ifndef PHILO_H
-# define PHILO_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   philosophers.h                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/07 15:48:55 by auzochuk      #+#    #+#                 */
+/*   Updated: 2023/03/07 16:51:01 by auzochuk      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -12,7 +24,7 @@
 # define EATING_T  "%lu Philosopher %i is now eating\n"
 # define SLEEPING_T  "%lu Philosopher %i is now sleeping\n"
 # define THINKING_T  "%lu Philosopher %i is now thinking\n"
-# define DEATH_T  "%lu Philoser %i has died\n"
+# define DEATH_T  "%lu Philosopher %i has died\n"
 # define LFORK_T "%lu Philosopher %i has picked up Left fork\n"
 # define RFORK_T "%lu Philosopher %i has picked up Right fork\n"
 
@@ -62,12 +74,12 @@ typedef struct s_menu
 {
 	t_philos		*philos;
 	unsigned long	start;
-	int				no_phls;
-	int				ttd;
-	int				tte;
-	int				tts;
-	int				meals;
-	int				death_counter;
+	long			no_phls;
+	long			ttd;
+	long			tte;
+	long			tts;
+	long			meals;
+	long			death_counter;
 	pthread_mutex_t term_lock;
 	pthread_mutex_t	master_lock;
 	pthread_mutex_t report_lock;
@@ -81,7 +93,7 @@ typedef struct s_fork
 	pthread_mutex_t lock;
 }	t_fork;
 
-int				init(char	**args, t_menu *menu);
+int				parse_args(char	**args, t_menu *menu);
 int				parse(char	**av);
 int				prepare(t_menu	*menu);
 void			create_phils(t_menu	*menu);
@@ -98,5 +110,7 @@ bool			done_eating(t_menu *menu);
 unsigned long	get_time(t_menu *menu);
 int				ft_atoi(const char	*s);
 bool			ft_isdigit(char a);
+void			better_sleep(unsigned long duration, t_menu *menu);
+int				init_mutex(t_menu *menu);
 
 #endif

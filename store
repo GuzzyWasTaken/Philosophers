@@ -1,0 +1,1 @@
+gcc -fsanitize=thread  main.c philosophers.h init.c && ./a.out 20 410 200 200 1

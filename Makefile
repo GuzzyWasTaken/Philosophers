@@ -1,44 +1,65 @@
-# //= Variables =//
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: auzochuk <auzochuk@student.codam.nl>         +#+                      #
+#                                                    +#+                       #
+#    Created: 2023/03/07 16:02:05 by auzochuk      #+#    #+#                  #
+#    Updated: 2023/03/07 16:46:04 by auzochuk      ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
 
-NAME	= Philosophers
-CFLAGS	= -w -Wunreachable-code -Ofast
-USER	= auzochuk
+# Name
+NAME = philosophers
+FLAGS = -Wall -Wextra -Werror
+DEBUG = -g
 
-LIBS	= -lglfw -L /Users/$(USER)/.brew/opt/glfw/lib/
-SRCS	= $(shell find ./src -iname "*.c")
-OBJS	= ${SRCS:.c=.o}
-HDR		= $(shell find ./src -iname "*.h")
+# Source Files
+HDR_FILES	:=	philosophers.h
+HDR_DIR		:=	includes/
+OBJ_DIR		:=  objects/
+SRC_DIR		:=	sources/
+HEADER		:=	$(addprefix $(HDR_DIR), $(HDR_SRC))
+FILES		:=	observer.c main.c init.c parse.c philosophers.c utils.c report.c 
+SRC			:=	$(addprefix $(SRC_DIR), $(FILES))
+OBJ			:=  $(addprefix $(OBJ_DIR), $(FILES:%.c=%.o))
 
-BOLD	= \033[1m
-BLACK	= \033[30;1m
-RED	= \033[31;1m
-GREEN	= \033[32;1m
-YELLOW	= \033[33;1m
-BLUE	= \033[34;1m
-MAGENTA	= \033[35;1m
-CYAN	= \033[36;1m
-WHITE	= \033[37;1m
-RESET	= \033[0m
+$(NAME): $(OBJ) $(HEADER) 
+	${CC} ${FLAGS} $(SRC) -o $(NAME)
 
-# //= Recipes =//
+debug: $(SRC) $(HEADER)
+	${CC} $(DEBUG) $(SRC) -o $(NAME)
 
-all: $(NAME)
+$(OBJ_DIR)%.o:$(SRC_DIR)%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(FLAGS) -c $< -o $@ 
 
-libft:
-	@$(MAKE) -C
-
-%.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $<  && printf "$(GREEN)$(BOLD)\rCompiling: $(notdir $<)\r\e[35C[OK]\n$(RESET)"
-
-$(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HDR) -o $(NAME)
+all: $(NAME) doc doc doc
 
 clean:
-	@rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -rf $(NAME)
 
-re: clean all
+re: fclean all
 
-.PHONY: all, clean, fclean, re, libmlx, libft
+doc:
+	@printf "⣿⠄⡇⢸⣟⠄⠁⢸⡽⠖⠛⠈⡉⣉⠉⠋⣁⢘⠉⢉⠛⡿⢿⣿⣿⣿⣿⣿⣿⣿\n"
+	@printf "⣷⣶⣷⣤⠄⣠⠖⠁⠄⠂⠁⠄⠄⠉⠄⠄⠎⠄⠠⠎⢐⠄⢑⣛⠻⣿⣿⣿⣿⣿\n"
+	@printf "⣿⣿⣿⠓⠨⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⠐⠅⠄⠉⠄⠗⠆⣸⣿⣿⣿⣿⣿\n"
+	@printf "⣿⣿⣿⡣⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⢰⣤⣦⠄⠄⠄⠄⠄⠄⠄⡀⡙⣿⣿⣿⣿\n"
+	@printf "⣿⣿⡛⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠔⠿⡿⠿⠒⠄⠠⢤⡀⡀⠄⠁⠄⢻⣿⣿⣿\n"
+	@printf "⣿⣿⠄⠄⠄⠄⠄⠄⣠⡖⠄⠁⠁⠄⠄⠄⠄⠄⠄⠄⣽⠟⡖⠄⠄⠄⣼⣿⣿⣿\n"
+	@printf "⣿⣿⠄⠄⠄⠄⠄⠄⢠⣠⣀⠄⠄⠄⠄⢀⣾⣧⠄⠂⠸⣈⡏⠄⠄⠄⣿⣿⣿⣿\n"
+	@printf "⣿⣿⡞⠄⠄⠄⠄⠄⢸⣿⣶⣶⣶⣶⣶⡿⢻⡿⣻⣶⣿⣿⡇⠄⠄⠄⣿⣿⣿⣿\n"
+	@printf "⣿⣿⡷⡂⠄⠄⠁⠄⠸⣿⣿⣿⣿⣿⠟⠛⠉⠉⠙⠛⢿⣿⡇⠄⠄⢀⣿⣿⣿⣿\n"
+	@printf "⣶⣶⠃⠄⠄⠄⠄⠄⠄⣾⣿⣿⡿⠁⣀⣀⣤⣤⣤⣄⢈⣿⡇⠄⠄⢸⣿⣿⣿⣿\n"
+	@printf "⣿⣯⠄⠄⠄⠄⠄⠄⠄⢻⣿⣿⣷⣶⣿⣿⣥⣬⣿⣿⣟⣿⠃⠄⠨⠺⢿⣿⣿⣿\n"
+	@printf "⠱⠂⠄⠄⠄⠄⠄⠄⠄⣬⣸⡝⠿⢿⣿⡿⣿⠻⠟⠻⢫⡁⠄⠄⠄⡐⣾⣿⣿⣿\n"
+	@printf "⡜⠄⠄⠄⠄⠄⠆⡐⡇⢿⣽⣻⣷⣦⣧⡀⡀⠄⠄⣴⣺⡇⠄⠁⠄⢣⣿⣿⣿⣿\n"
+	@printf "⠡⠱⠄⠄⠡⠄⢠⣷⠆⢸⣿⣿⣿⣿⣿⣿⣷⣿⣾⣿⣿⡇⠄⠄⠠⠁⠿⣿⣿⣿\n"
+	@printf "⢀⣲⣧⣷⣿⢂⣄⡉⠄⠘⠿⣿⣿⣿⡟⣻⣯⠿⠟⠋⠉⢰⢦⠄⠊⢾⣷⣮⣽⣛\n"
+
+.PHONY:	all clean fclean re
