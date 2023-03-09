@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 15:48:55 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/03/07 16:51:01 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/03/09 20:49:48 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ typedef enum e_state
 	FORK_L = 4,
 	FORK_R = 5,
 }	t_state;
+
+typedef enum e_term_state
+{
+	ONGOING = 1,
+	TERMINATE = 2,
+	SATISFIED = 3,
+}	t_term_state;
 
 typedef enum e_ingredients
 {
@@ -84,7 +91,7 @@ typedef struct s_menu
 	pthread_mutex_t	master_lock;
 	pthread_mutex_t report_lock;
 	pthread_mutex_t fat_lock;
-	bool			terminate;
+	int				terminate;
 }	t_menu;
 
 typedef struct s_fork
@@ -102,9 +109,9 @@ void			*birth(void	*param);
 int				dindins(void	*param);
 void			prep(t_philos *philo);
 void			observe(t_menu *menu);
-bool			last_supper(t_menu *menu);
+int				last_supper(t_menu *menu);
 int				report(t_philos	*philo, unsigned long time);
-bool			terminate(t_philos *philo);
+int				terminate(t_philos *philo);
 void			fax_report(t_philos *philo);
 bool			done_eating(t_menu *menu);
 unsigned long	get_time(t_menu *menu);

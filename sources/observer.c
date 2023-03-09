@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 15:48:36 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/03/07 16:50:28 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/03/09 21:11:23 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,65 +15,71 @@
 void	observe(t_menu *menu)
 {
 	t_philos		*phil;
-	bool			fat;
-	bool			terminate;
+	int				terminate;
 
-	terminate = false;
-	fat = false;
+	terminate = ONGOING;
 	phil = menu->philos;
-	while (terminate == false && fat == false)
+	while (terminate == ONGOING)
 	{
 		terminate = last_supper(menu);
-		usleep(500);
+		usleep(800);
 	}
 	return ;
 }
+int satisfaction(t_menu *menu, int	satisfied)
+{
+	if (satisfied == menu->no_phls && menu->meals > 0)
+	{
+		pthread_mutex_lock(&menu->term_lock);
+		menu->terminate = SATISFIED;
+		pthread_mutex_unlock(&menu->term_lock);
+		return (SATISFIED);
+	}
+	return (ONGOING);
+}
 
-bool last_supper(t_menu *menu)
+int	last_supper(t_menu *menu)
 {
 	t_philos	*phil;
 	int			satisfied;
 	int			i;
 
-	i = 0;
+	i = -1;
 	satisfied = 0;
 	phil = menu->philos;
-	while (i < menu->no_phls)
+	while (++i < menu->no_phls)
 	{
 		pthread_mutex_lock(&phil[i].body);
 		if (get_time(menu) - phil[i].last_meal > (unsigned long)menu->ttd)
 		{
 			phil[i].existence = false;
-			pthread_mutex_lock(&menu->master_lock);
-			menu->terminate = true;
-			pthread_mutex_unlock(&menu->master_lock);
+			pthread_mutex_lock(&menu->term_lock);
+			menu->terminate = TERMINATE;
+			pthread_mutex_unlock(&menu->term_lock);
 			report(&phil[i], get_time(phil[i].menu));
 			pthread_mutex_unlock(&phil[i].body);
-			return (true);
+			return (TERMINATE);
 		}
 		if (phil[i].num_meals >= menu->meals)
 			satisfied++;
 		pthread_mutex_unlock(&phil[i].body);
-		i++;
 	}
-	if (satisfied == menu->no_phls && menu->meals > 0)
-	{
-		pthread_mutex_lock(&menu->master_lock);
-		menu->terminate = true;
-		pthread_mutex_unlock(&menu->master_lock);
-		return (true);
-	}
-	return (false);
+	return (satisfaction(menu, satisfied));
 }
 
-bool	terminate(t_philos *philo)
+int	terminate(t_philos *philo)
 {
 	pthread_mutex_lock(&philo->menu->term_lock);
-	if (philo->menu->terminate == true)
+	if (philo->menu->terminate == TERMINATE)
 	{
 		philo->existence = false;
 		pthread_mutex_unlock(&philo->menu->term_lock);
-		return (false);
+		return (TERMINATE);
+	}
+	else if (philo->menu->terminate == SATISFIED)
+	{
+		pthread_mutex_unlock(&philo->menu->term_lock);
+		return (SATISFIED);
 	}
 	pthread_mutex_unlock(&philo->menu->term_lock);
 	return (true);

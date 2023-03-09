@@ -6,14 +6,14 @@
 #    By: auzochuk <auzochuk@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/07 16:02:05 by auzochuk      #+#    #+#                  #
-#    Updated: 2023/03/07 16:46:04 by auzochuk      ########   odam.nl          #
+#    Updated: 2023/03/09 18:12:23 by auzochuk      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 # Name
 NAME = philosophers
 FLAGS = -Wall -Wextra -Werror
-DEBUG = -g
+DEBUG = -g -fsanitize=thread
 
 # Source Files
 HDR_FILES	:=	philosophers.h
