@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 15:49:02 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/03/09 21:07:09 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/03/21 20:14:55 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	fax_report(t_philos *philo)
 {
-	//printf("%i faxing\n", philo->id);
 	if (philo->state == EATING)
 		printf(EATING_T, get_time(philo->menu), philo->id);
 	else if (philo->state == SLEEPING)
@@ -32,18 +31,15 @@ int	report(t_philos	*philo, unsigned long time)
 	int	state;
 
 	state = terminate(philo);
-	//printf("%i before sleep\n", philo->id);
 	pthread_mutex_lock(&philo->menu->report_lock);
 	if (philo->menu->death_counter == 1 || state == SATISFIED)
 	{
-		// printf("%i is aware of sat\n", philo->id);
 		pthread_mutex_unlock(&philo->menu->report_lock);
 		return (1);
 	}
 	if (state == TERMINATE)
 	{
 		philo->menu->death_counter = 1;
-		//printf("%i isDED\n", philo->id);
 		printf(DEATH_T, time, philo->id);
 		pthread_mutex_unlock(&philo->menu->report_lock);
 		return (1);
@@ -53,4 +49,3 @@ int	report(t_philos	*philo, unsigned long time)
 	pthread_mutex_unlock(&philo->menu->report_lock);
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 15:48:36 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/03/09 21:11:23 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/03/21 20:13:40 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	observe(t_menu *menu)
 	}
 	return ;
 }
-int satisfaction(t_menu *menu, int	satisfied)
+
+int	satisfaction(t_menu *menu, int satisfied)
 {
 	if (satisfied == menu->no_phls && menu->meals > 0)
 	{

@@ -6,13 +6,13 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 16:45:27 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/03/07 16:59:44 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/03/21 20:14:29 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-int		print_error()
+int	print_error(void)
 {
 	write(1, "invalid arguements: expected numeric input\n", 44);
 	return (1);
@@ -47,7 +47,7 @@ int	parse_args(char	**args, t_menu *menu)
 		return (print_error());
 	menu->ttd = ft_atoi(args[TT_DIE]);
 	if (menu->ttd > INT_MAX || menu->ttd <= 0)
-		return (print_error()); 
+		return (print_error());
 	menu->tte = ft_atoi(args[TT_EAT]);
 	if (menu->tte > INT_MAX || menu->tte <= 0)
 		return (print_error());

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   philosophers.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/21 19:50:32 by auzochuk      #+#    #+#                 */
+/*   Updated: 2023/03/21 20:18:44 by auzochuk      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philosophers.h"
 
 void	prep(t_philos *philo)
@@ -41,11 +53,26 @@ int	dindins(void	*param)
 	pthread_mutex_unlock(philo->right);
 	pthread_mutex_unlock(philo->left);
 	philo->state = SLEEPING;
-
 	return (0);
 }
 
-//make local existnce bool
+void	rest(t_philos *philo)
+{
+	better_sleep(philo->menu->tts, philo->menu);
+	pthread_mutex_lock(&philo->body);
+	report(philo, get_time(philo->menu));
+	pthread_mutex_unlock(&philo->body);
+	philo->state = THINKING;
+}
+
+void	ponder(t_philos *philo)
+{
+	pthread_mutex_lock(&philo->body);
+	report(philo, get_time(philo->menu));
+	pthread_mutex_unlock(&philo->body);
+	philo->state = EATING;
+}
+
 void	*birth(void	*param)
 {
 	t_philos	*philo;
@@ -61,23 +88,14 @@ void	*birth(void	*param)
 		else if (philo->state == SLEEPING)
 		{
 			state = terminate(philo);
-			better_sleep(philo->menu->tts, philo->menu);
-			pthread_mutex_lock(&philo->body);
-			report(philo, get_time(philo->menu));
-			pthread_mutex_unlock(&philo->body);
-			philo->state = THINKING;
+			rest(philo);
 		}
 		else if (philo->state == THINKING)
 		{
 			state = terminate(philo);
-			pthread_mutex_lock(&philo->body);
-			report(philo, get_time(philo->menu));
-			pthread_mutex_unlock(&philo->body);
-			philo->state = EATING;
+			ponder(philo);
 		}
 		state = terminate(philo);
-		// printf("philo %i world state is %i\n",philo->id, state);
 	}
 	return (NULL);
 }
-

@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 15:48:55 by auzochuk      #+#    #+#                 */
-/*   Updated: 2023/03/09 20:49:48 by auzochuk      ########   odam.nl         */
+/*   Updated: 2023/03/21 20:21:25 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@
 # define SLEEPING_T  "%lu Philosopher %i is now sleeping\n"
 # define THINKING_T  "%lu Philosopher %i is now thinking\n"
 # define DEATH_T  "%lu Philosopher %i has died\n"
-# define LFORK_T "%lu Philosopher %i has picked up Left fork\n"
-# define RFORK_T "%lu Philosopher %i has picked up Right fork\n"
+//# define LFORK_T "%lu Philosopher %i has picked up Left fork\n"
+//# define RFORK_T "%lu Philosopher %i has picked up Right fork\n"
+# define LFORK_T "%lu Philosopher %i has picked up a fork\n"
+# define RFORK_T "%lu Philosopher %i has picked up a fork\n"
 
 typedef struct s_menu	t_menu;
 
